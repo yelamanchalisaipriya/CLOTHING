@@ -10,7 +10,8 @@ import {
   Minus,
   Check,
   Ruler,
-  X
+  X,
+  Sparkles
 } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { PRODUCTS } from '../data/products';
@@ -263,6 +264,18 @@ export const ProductDetailPage: React.FC = () => {
                     {sz}
                   </button>
                 ))}
+              </div>
+
+              <div className="flex items-center justify-between text-[11px] text-[#6E6D6A] mt-2 pt-1.5 border-t border-[#F4F2EC]">
+                <span>Unsure about proportions?</span>
+                <button
+                  type="button"
+                  onClick={() => window.dispatchEvent(new CustomEvent('open-n8n-chat'))}
+                  className="inline-flex items-center gap-1 text-[#9B7E51] hover:text-[#171717] font-semibold transition-colors"
+                >
+                  <Sparkles className="w-3 h-3" />
+                  <span>Consult AI Stylist</span>
+                </button>
               </div>
             </div>
 

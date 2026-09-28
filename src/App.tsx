@@ -5,6 +5,7 @@ import { Footer } from './components/Footer';
 import { CartDrawer } from './components/CartDrawer';
 import { SearchModal } from './components/SearchModal';
 import { Toast } from './components/Toast';
+import { N8nChatbot } from './components/N8nChatbot';
 
 import { HomePage } from './pages/HomePage';
 import { ShopPage } from './pages/ShopPage';
@@ -49,10 +50,11 @@ const AppContent: React.FC = () => {
       </main>
       <Footer />
 
-      {/* Global Modals & Notifications */}
+      {/* Global Modals, Chatbot & Notifications */}
       <CartDrawer />
       <SearchModal />
       <Toast />
+      <N8nChatbot />
     </div>
   );
 };

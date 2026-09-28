@@ -35,3 +35,35 @@ html {
   background: #A8A395;
 }
 
+/* n8n Chat Widget Custom Luxury Theme */
+:root {
+  --chat--color-primary: #171717;
+  --chat--color-primary-shade-50: #262626;
+  --chat--color-primary-shade-100: #383838;
+  --chat--color-secondary: #9B7E51;
+  --chat--color-white: #FAF9F5;
+  --chat--color-light: #F4F2EC;
+  --chat--color-light-shade-50: #EBE8DF;
+  --chat--color-light-shade-100: #DDD9CE;
+  --chat--color-medium: #78756E;
+  --chat--color-dark: #171717;
+  --chat--color-disabled: #A8A49B;
+  --chat--color-typing: #9B7E51;
+  --chat--font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --chat--border-radius: 6px;
+  --chat--window--width: 390px;
+  --chat--window--height: 580px;
+}
+
+.chat-toggle {
+  background-color: #171717 !important;
+  color: #FAF9F5 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+  transition: transform 0.2s ease, background-color 0.2s ease !important;
+}
+
+.chat-toggle:hover {
+  background-color: #9B7E51 !important;
+  transform: scale(1.05);
+}
+

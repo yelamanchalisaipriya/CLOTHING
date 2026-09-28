@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, MessageCircle, Clock, Send, Check, ChevronDown } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageCircle, Clock, Send, Check, ChevronDown, Sparkles, Bot } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 
 export const ContactPage: React.FC = () => {
   const { showToast } = useShop();
+
+  const handleOpenAiChat = () => {
+    window.dispatchEvent(new CustomEvent('open-n8n-chat'));
+  };
 
   const [form, setForm] = useState({
     name: '',
@@ -68,50 +72,82 @@ export const ContactPage: React.FC = () => {
           </p>
         </div>
 
-        {/* 3 Contact Quick Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          {/* Card 1: Concierge Phone */}
-          <div className="bg-white p-6 sm:p-8 border border-[#EBE8DF] rounded-xs shadow-xs space-y-3">
-            <div className="w-10 h-10 bg-[#FAF9F5] text-[#9B7E51] rounded-xs flex items-center justify-center">
-              <Phone className="w-5 h-5" />
+        {/* Contact Quick Cards (Including n8n AI Chatbot) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
+          {/* Card 1: n8n AI Stylist Concierge */}
+          <div className="bg-[#171717] text-white p-6 rounded-xs shadow-xs space-y-3 flex flex-col justify-between border border-[#333]">
+            <div className="space-y-3">
+              <div className="w-10 h-10 bg-[#262626] text-[#D8B984] rounded-xs flex items-center justify-center">
+                <Bot className="w-5 h-5" />
+              </div>
+              <div className="flex items-center gap-1.5">
+                <h3 className="font-serif text-lg font-medium text-white">AI Stylist Bot</h3>
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
+              </div>
+              <p className="text-xs text-[#A8A49B]">
+                24/7 instant answers on sizing, fabric composition, orders & styling.
+              </p>
             </div>
-            <h3 className="font-serif text-lg font-medium text-[#171717]">Phone Concierge</h3>
-            <p className="text-xs text-[#6E6D6A]">Direct line for instant guidance & phone orders.</p>
-            <div className="pt-2 text-xs font-semibold text-[#171717] space-y-1">
-              <p>+91 (80) 4912 3456</p>
-              <p className="text-[#8E8B82] font-normal">Mon – Sat, 10:00 AM – 8:00 PM IST</p>
-            </div>
-          </div>
-
-          {/* Card 2: WhatsApp Chat */}
-          <div className="bg-white p-6 sm:p-8 border border-[#EBE8DF] rounded-xs shadow-xs space-y-3">
-            <div className="w-10 h-10 bg-[#FAF9F5] text-emerald-600 rounded-xs flex items-center justify-center">
-              <MessageCircle className="w-5 h-5" />
-            </div>
-            <h3 className="font-serif text-lg font-medium text-[#171717]">WhatsApp Stylist</h3>
-            <p className="text-xs text-[#6E6D6A]">Chat directly with our senior fit advisors.</p>
             <div className="pt-2">
               <button
                 type="button"
-                onClick={handleWhatsApp}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold rounded-xs transition-colors"
+                onClick={handleOpenAiChat}
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#D8B984] hover:bg-white text-[#171717] text-xs font-semibold rounded-xs transition-colors shadow-xs"
               >
-                <MessageCircle className="w-4 h-4" />
-                <span>Message on WhatsApp</span>
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Launch AI Chat</span>
               </button>
             </div>
           </div>
 
-          {/* Card 3: Email Inquiries */}
-          <div className="bg-white p-6 sm:p-8 border border-[#EBE8DF] rounded-xs shadow-xs space-y-3">
-            <div className="w-10 h-10 bg-[#FAF9F5] text-[#9B7E51] rounded-xs flex items-center justify-center">
-              <Mail className="w-5 h-5" />
+          {/* Card 2: WhatsApp Chat */}
+          <div className="bg-white p-6 border border-[#EBE8DF] rounded-xs shadow-xs space-y-3 flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="w-10 h-10 bg-[#FAF9F5] text-emerald-600 rounded-xs flex items-center justify-center">
+                <MessageCircle className="w-5 h-5" />
+              </div>
+              <h3 className="font-serif text-lg font-medium text-[#171717]">WhatsApp Stylist</h3>
+              <p className="text-xs text-[#6E6D6A]">Chat directly with human fit advisors & studio tailors.</p>
             </div>
-            <h3 className="font-serif text-lg font-medium text-[#171717]">Email Concierge</h3>
-            <p className="text-xs text-[#6E6D6A]">For orders, alterations, and press inquiries.</p>
-            <div className="pt-2 text-xs font-semibold text-[#171717] space-y-1">
-              <p>concierge@veloraatelier.com</p>
-              <p className="text-[#8E8B82] font-normal">Responses within 4 business hours</p>
+            <div className="pt-2">
+              <button
+                type="button"
+                onClick={handleWhatsApp}
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold rounded-xs transition-colors"
+              >
+                <MessageCircle className="w-3.5 h-3.5" />
+                <span>WhatsApp Line</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Card 3: Concierge Phone */}
+          <div className="bg-white p-6 border border-[#EBE8DF] rounded-xs shadow-xs space-y-3 flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="w-10 h-10 bg-[#FAF9F5] text-[#9B7E51] rounded-xs flex items-center justify-center">
+                <Phone className="w-5 h-5" />
+              </div>
+              <h3 className="font-serif text-lg font-medium text-[#171717]">Phone Concierge</h3>
+              <p className="text-xs text-[#6E6D6A]">Direct line for instant guidance & phone orders.</p>
+            </div>
+            <div className="pt-2 text-xs font-semibold text-[#171717]">
+              <p>+91 (80) 4912 3456</p>
+              <p className="text-[#8E8B82] font-normal text-[11px]">Mon–Sat, 10am–8pm</p>
+            </div>
+          </div>
+
+          {/* Card 4: Email Inquiries */}
+          <div className="bg-white p-6 border border-[#EBE8DF] rounded-xs shadow-xs space-y-3 flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="w-10 h-10 bg-[#FAF9F5] text-[#9B7E51] rounded-xs flex items-center justify-center">
+                <Mail className="w-5 h-5" />
+              </div>
+              <h3 className="font-serif text-lg font-medium text-[#171717]">Email Concierge</h3>
+              <p className="text-xs text-[#6E6D6A]">For custom alterations and press inquiries.</p>
+            </div>
+            <div className="pt-2 text-xs font-semibold text-[#171717]">
+              <p className="truncate">concierge@veloraatelier.com</p>
+              <p className="text-[#8E8B82] font-normal text-[11px]">Reply within 4 hrs</p>
             </div>
           </div>
         </div>
