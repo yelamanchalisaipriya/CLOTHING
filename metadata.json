@@ -1,0 +1,6 @@
+{
+  "name": "VÉLORA ATELIER | Modern Luxury Clothing & Essentials",
+  "description": "Discover timeless ready-to-wear silhouettes crafted with artisanal precision. Shop our curated collections of Men's, Women's, and Kids' contemporary clothing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
