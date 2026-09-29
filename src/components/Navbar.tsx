@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingBag, Search, Menu, X, Heart, ArrowRight } from 'lucide-react';
+import { ShoppingBag, Search, Menu, X, Heart, ArrowRight, Sparkles } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 
 export const Navbar: React.FC = () => {
@@ -132,8 +132,20 @@ export const Navbar: React.FC = () => {
           </button>
         </nav>
 
-        {/* Zone 3: Primary Actions (Search, Wishlist, Cart) */}
+        {/* Zone 3: Primary Actions (AI Stylist, Search, Wishlist, Cart) */}
         <div className="flex items-center gap-1 sm:gap-2">
+          {/* n8n AI Chatbot Trigger */}
+          <button
+            type="button"
+            aria-label="Ask AI Stylist"
+            title="Chat with n8n AI Stylist"
+            onClick={() => window.dispatchEvent(new CustomEvent('open-n8n-chat'))}
+            className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white hover:bg-[#171717] hover:text-white text-[#171717] border border-[#E5E2D9] rounded-full transition-colors text-xs font-medium mr-1 shadow-2xs group"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-[#9B7E51] group-hover:text-[#D8B984]" />
+            <span className="hidden lg:inline text-[11px] uppercase tracking-wider font-semibold">AI Stylist</span>
+          </button>
+
           {/* Search Trigger */}
           <button
             type="button"
@@ -239,6 +251,17 @@ export const Navbar: React.FC = () => {
           </div>
 
           <div className="mt-8 pt-6 border-t border-[#EBE8DF] flex flex-col gap-3">
+            <button
+              type="button"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                window.dispatchEvent(new CustomEvent('open-n8n-chat'));
+              }}
+              className="w-full py-3 px-4 bg-[#FAF9F5] border border-[#E5E2D9] rounded-xs text-xs font-semibold text-[#171717] flex items-center justify-center gap-2 text-center"
+            >
+              <Sparkles className="w-4 h-4 text-[#9B7E51]" />
+              <span>Ask n8n AI Stylist Concierge</span>
+            </button>
             <button
               type="button"
               onClick={() => {
